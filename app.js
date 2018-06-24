@@ -20,6 +20,7 @@ function memoize(n) {
 
 let foo = function (x) {
 console.log("calculating");
+//changed the number to Squared calculation
 return x * x;
 }
 
