@@ -5,10 +5,10 @@ function memoize(n) {
         let values = JSON.stringify(arguments);
     // in cashe or not?
     if (cache[values]){
-       // Yes, then return it
+       // If Yes, then return it
     return cache[values];
   }
-        //No, then cashe the results of its call 
+        //If No, then cashe the results of its call 
      else {
       let value = n.apply(this, arguments);
       cache[values] = value;
@@ -19,8 +19,9 @@ function memoize(n) {
 
 
 let foo = function (x) {
+//Will print "calculating" when the result is not from cache
 console.log("calculating");
-//changed the number to Squared calculation
+//Changed the original calculation in sample to square calculation
 return x * x;
 }
 
@@ -28,14 +29,14 @@ return x * x;
 let memoizedFoo = memoize(foo);
 
 console.log(memoizedFoo(5));
-// calculating!
+// calculating
 // 25
 
-//returns the results from cache
-// 25
 console.log(memoizedFoo(5));
+// 25
 
-
-// 100 (notice how 'calculating!' is not printed this time)
+//'calculating' is not printed this time, therefore this returns the results from cache
 
 console.log(memoizedFoo(10));
+//calculating
+// 100  
